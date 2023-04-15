@@ -1,5 +1,26 @@
 # Getting Started with Create React App
 
+#my URLs
+Physiotherapist - Mr Myles Burfield: https://sports-and-exercise-physiotherapy.au3.cliniko.com/bookings?business_id=1000889477293415934&practitioner_id=943610693033139751&_ga=2.147084785.735113429.1681547825-1643438956.1672969453#service
+
+Physiotherapist - Mr Campbell Antonio: https://sports-and-exercise-physiotherapy.au3.cliniko.com/bookings?business_id=1000889477293415934&practitioner_id=1043680863335751617&_ga=2.242964164.735113429.1681547825-1643438956.1672969453#service
+
+Massage Therapist - Mrs Debra Mielke: https://excelr8.au1.cliniko.com/bookings?business_id=1110366787511256623&practitioner_id=104018&_ga=2.246092482.735113429.1681547825-1643438956.1672969453#service
+
+Dietitian - TBA: 
+
+Sports Psychologist - TBA:
+
+
+
+
+
+
+
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
