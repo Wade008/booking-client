@@ -2,7 +2,7 @@
 // import './App.css';
 
 import Global from "./components/styled/Global";
-
+import Header from "./components/Header"
 
 
 
@@ -13,7 +13,7 @@ function App() {
   return (
     <>
       <Global />
-      <h1>APP</h1>
+      <Header />
     </>
 
   )
