@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+
+// import './App.css';
+
+import Global from "./components/styled/Global";
+import Header from "./components/Header";
+import Appointments from "./components/Appointments";
+// import EmbeddedPract1 from "./components/EmbeddedPrac1";
+// import EmbeddedPract2 from "./components/EmbeddedPrac2";
+// import EmbeddedPract3 from "./components/EmbeddedPrac3";
 
 function App() {
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <Global />
+      <Header />
+      <Appointments />
+    </>
+
+  )
+
 }
 
 export default App;
