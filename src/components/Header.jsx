@@ -1,6 +1,5 @@
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
 import mainLogo from "../img/Physio-Logo-1-2.png"
 import { Image } from "./styled/CustomStyles"
 

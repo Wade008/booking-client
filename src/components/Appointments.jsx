@@ -11,12 +11,9 @@ import { useState } from "react"
 
 const Appointments = () => {
 
-    const practitionersList = pracDetails;
-
-    const [practitioners, setPractitioners] = useState(practitionersList);
+    const practitioners = pracDetails;
 
     const [selected, setSelected] = useState(null)
-
 
     const getPractitioner = (id) => {
         setSelected(id)
@@ -75,17 +72,17 @@ const Appointments = () => {
                 </Grid>
                 <Grid item md={8} sm={7} xs={12} >
                     <Box sx={{ height: "1000px", p: 0 }}>
-                        {selected == 1 ?
+                        {selected === 1 ?
                             <>
                                 <Typography component="h1" variant="h6" sx={{ mt: 2, height: "70px", textAlign: "center" }}>Book an appointment with {practitioners[0].firstname}  {practitioners[0].lastname}</Typography>
                                 <EmbeddedPract1 />
                             </>
-                            : selected == 2 ?
+                            : selected === 2 ?
                                 <>
                                     <Typography component="h1" variant="h6" sx={{ mt: 2, height: "70px", textAlign: "center" }}>Book an appointment with {practitioners[1].firstname}  {practitioners[1].lastname}</Typography>
                                     <EmbeddedPract2 />
                                 </> :
-                                selected == 3 ?
+                                selected === 3 ?
                                     <>
                                         <Typography component="h1" variant="h6" sx={{ mt: 2, height: "70px", textAlign: "center" }}>Book an appointment with {practitioners[2].firstname}  {practitioners[2].lastname}</Typography>
                                         <EmbeddedPract3 />
