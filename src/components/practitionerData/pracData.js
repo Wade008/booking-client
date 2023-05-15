@@ -37,14 +37,14 @@ export const displayDetails = [
         title: "Our Phyiotherapists",
         practitioners: [
             {
-                id: 1,
+                id: "1a",
                 firstname: "Myles",
                 lastname: "Burfield",
                 role: "Phyiotherapist",
                 avatar: <Avatar>MB</Avatar>
             },
             {
-                id: 2,
+                id: "1b",
                 firstname: "Campbell",
                 lastname: "Antonio",
                 role: "Physiotherapist",
@@ -58,7 +58,7 @@ export const displayDetails = [
         title: "Our Massage therapist",
         practitioners: [
             {
-                id: 3,
+                id: "2a",
                 firstname: "Debra",
                 lastname: "Mielke",
                 role: "Massage therapist",
