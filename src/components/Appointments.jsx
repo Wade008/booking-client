@@ -17,7 +17,7 @@ import { useState } from "react"
 const Appointments = () => {
 
     const practitioners = pracDetails;
-    const [selected, setSelected] = useState(null)
+    const [selected, setSelected] = useState('')
 
     const displayDetailsMobile = () => {
 
@@ -27,7 +27,7 @@ const Appointments = () => {
 
             item.practitioners.forEach((practitioner) => {
 
-                mobileList.push(`${practitioner.firstname} ${practitioner.lastname} - ${practitioner.role}`)
+                mobileList.push({ id: practitioner.id, description: `${practitioner.firstname} ${practitioner.lastname} - ${practitioner.role}`})
             })
 
         })
@@ -35,7 +35,7 @@ const Appointments = () => {
         return mobileList
     }
 
-    // console.log(displayDetailsMobile())
+console.log(displayDetailsMobile())
 
 
 
@@ -96,7 +96,7 @@ const Appointments = () => {
                                 label="Select a practitioner"
                                 onChange={getPractitioner}
                             >
-                            
+                                {/* <MenuItem value={"1a"}>Myles Burfield</MenuItem> */}
 
 
                             </Select>
