@@ -2,6 +2,11 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+
 
 import EmbeddedPract1 from './EmbeddedPrac1';
 import EmbeddedPract2 from './EmbeddedPrac2';
@@ -34,8 +39,9 @@ const Appointments = () => {
 
 
 
-    const getPractitioner = (id) => {
-        setSelected(id)
+    const getPractitioner = (id, e = "undefined") => {
+
+        e === "undefined" && setSelected(id)
     }
 
     // console.log(practitioners)
@@ -45,8 +51,8 @@ const Appointments = () => {
         <Container component="main" maxWidth="lg" sx={{ mt: 4, p: 0 }}>
 
             <Grid container >
-                <Grid item md={4} sm={5} xs={12} >
-                    <Box sx={{ display: { xs: "block", sm: "block", md: "block" }, height: "550px", bgcolor: "#d3d3d3", p: 0, borderRadius: 3 }}>
+                <Grid item md={4} sm={5} xs={12}>
+                    <Box sx={{ display: { xs: "none", sm: "block", md: "block" }, height: "550px", bgcolor: "#d3d3d3", p: 0, borderRadius: 3 }}>
 
                         <Typography variant="h5" sx={{ p: 2, textAlign: "center" }}>
                             Make a booking
@@ -78,10 +84,25 @@ const Appointments = () => {
                             )
                         })}
 
-
-
                     </Box>
 
+                    <Box sx={{ display: { xs: "block", sm: "none", md: "none" } }}>
+                        <FormControl fullWidth>
+                            <InputLabel id="input-label-practitioner">Select a practitioner</InputLabel>
+                            <Select
+                                labelId="input-label-practitioner"
+                                id="practitioner-select"
+                                value={selected}
+                                label="Select a practitioner"
+                                onChange={getPractitioner}
+                            >
+                            
+
+
+                            </Select>
+                        </FormControl>
+
+                    </Box>
 
                 </Grid>
                 <Grid item md={8} sm={7} xs={12} >
@@ -103,7 +124,7 @@ const Appointments = () => {
                                     </>
 
                                     :
-                                    <Typography component="h1" variant="h6" sx={{ mt: 2, height: "50px", textAlign: "center" }}>Select a practitioner to make a booking</Typography>
+                                    <Typography component="h1" variant="h6" sx={{ display: { xs: "none", sm: "block", md: "block" }, mt: 2, height: "50px", textAlign: "center" }}>Select a practitioner to make a booking</Typography>
 
                         }
                     </Box>
