@@ -7,45 +7,88 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
+import EmbeddedPractitioner from "./EmbeddedPractitioner";
 
-import EmbeddedPract1 from './EmbeddedPrac1';
-import EmbeddedPract2 from './EmbeddedPrac2';
-import EmbeddedPract3 from './EmbeddedPrac3';
-import { pracDetails, displayDetails } from './practitionerData/pracData';
-import { useState } from "react"
+import { displayDetails } from './practitionerData/pracData';
+import { useState, useEffect } from "react"
 
 const Appointments = () => {
 
-    const practitioners = pracDetails;
-    const [selected, setSelected] = useState('')
 
-    const displayDetailsMobile = () => {
+    const [selected, setSelected] = useState(null)
+    const [mobileSelect, setMobileSelect] = useState([])
+    const [mobileSelected, setMobileSelected] = useState('')
+    const [practitionerList, setPractitionerList] = useState([])
 
-        let mobileList = []
+    useEffect(() => {
+        const displayDetailsPrep = () => {
 
-        displayDetails.forEach((item) => {
+            let mobileList = []
+            let practitionerObjects = []
 
-            item.practitioners.forEach((practitioner) => {
+            displayDetails.forEach((item) => {
 
-                mobileList.push({ id: practitioner.id, description: `${practitioner.firstname} ${practitioner.lastname} - ${practitioner.role}`})
+                item.practitioners.forEach((practitioner) => {
+
+                    mobileList.push({ id: practitioner.id, description: `${practitioner.firstname} ${practitioner.lastname} - ${practitioner.role}` })
+
+                    practitionerObjects.push(practitioner)
+
+                })
+
             })
 
-        })
+            setMobileSelect(mobileList)
+            setPractitionerList(practitionerObjects)
+        }
 
-        return mobileList
+        displayDetailsPrep()
+
+    }, [])
+
+    //this function is used by both functions below
+
+    const setSelectedPractitioner = (id) => {
+
+        const selectedPractitioner = practitionerList.find((practitioner) => practitioner.id === id
+
+        )
+        // console.log(selectedPractitioner)
+
+        setSelected(selectedPractitioner)
+
     }
 
-console.log(displayDetailsMobile())
+    //set the practitioner id in views other than xs
+    const getPractitioner = (id) => {
 
+        setSelectedPractitioner(id)
 
+        //find the relevant description in mobileSelect and set mobileSelected
 
-    const getPractitioner = (id, e = "undefined") => {
+        const practitioner = mobileSelect.find((element) =>
+            element.id === id
+        );
 
-        e === "undefined" && setSelected(id)
+        setMobileSelected(practitioner.description)
+
     }
 
-    // console.log(practitioners)
 
+    //set practitioner id in xs view
+
+    const setMobilePractitioner = (e) => {
+
+        setMobileSelected(e.target.value)
+
+        //find the relevant id in mobileSelect 
+        const practitioner = mobileSelect.find((element) =>
+            element.description === e.target.value
+        );
+
+        setSelectedPractitioner(practitioner.id)
+
+    }
 
     return (
         <Container component="main" maxWidth="lg" sx={{ mt: 4, p: 0 }}>
@@ -86,18 +129,22 @@ console.log(displayDetailsMobile())
 
                     </Box>
 
-                    <Box sx={{ display: { xs: "block", sm: "none", md: "none" } }}>
+                    <Box sx={{ display: { xs: "block", sm: "none", md: "none" }, ml: 1, mr: 1 }}>
                         <FormControl fullWidth>
                             <InputLabel id="input-label-practitioner">Select a practitioner</InputLabel>
                             <Select
                                 labelId="input-label-practitioner"
                                 id="practitioner-select"
-                                value={selected}
+                                value={mobileSelected}
                                 label="Select a practitioner"
-                                onChange={getPractitioner}
+                                onChange={setMobilePractitioner}
+                                name="selected practitioner"
                             >
-                                {/* <MenuItem value={"1a"}>Myles Burfield</MenuItem> */}
-
+                                {mobileSelect.map((item) => {
+                                    return (
+                                        <MenuItem key={item.id} value={item.description}>{item.description}</MenuItem>
+                                    )
+                                })}
 
                             </Select>
                         </FormControl>
@@ -107,26 +154,19 @@ console.log(displayDetailsMobile())
                 </Grid>
                 <Grid item md={8} sm={7} xs={12} >
                     <Box sx={{ height: "1000px", p: 0 }}>
-                        {selected === "1a" ?
-                            <>
-                                <Typography component="h1" variant="h6" sx={{ mt: 2, height: "70px", textAlign: "center" }}>Book an appointment with {practitioners[0].firstname}  {practitioners[0].lastname}</Typography>
-                                <EmbeddedPract1 />
-                            </>
-                            : selected === "1b" ?
-                                <>
-                                    <Typography component="h1" variant="h6" sx={{ mt: 2, height: "70px", textAlign: "center" }}>Book an appointment with {practitioners[1].firstname}  {practitioners[1].lastname}</Typography>
-                                    <EmbeddedPract2 />
-                                </> :
-                                selected === "2a" ?
-                                    <>
-                                        <Typography component="h1" variant="h6" sx={{ mt: 2, height: "70px", textAlign: "center" }}>Book an appointment with {practitioners[2].firstname}  {practitioners[2].lastname}</Typography>
-                                        <EmbeddedPract3 />
-                                    </>
+                        {selected ?
+                            <EmbeddedPractitioner
+                                clinikoId={selected.cliniko_id}
+                                source={selected.source}
+                                firstname={selected.firstname}
+                                lastname={selected.lastname}
 
-                                    :
-                                    <Typography component="h1" variant="h6" sx={{ display: { xs: "none", sm: "block", md: "block" }, mt: 2, height: "50px", textAlign: "center" }}>Select a practitioner to make a booking</Typography>
-
+                            />
+                            :
+                            <Typography component="h1" variant="h6" sx={{ mt: 2, height: "50px", textAlign: "center" }}>Select a practitioner to make a booking</Typography>
                         }
+
+
                     </Box>
 
                 </Grid>
