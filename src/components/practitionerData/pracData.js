@@ -14,7 +14,7 @@ export const displayDetails = [
                 role: "Phyiotherapist",
                 avatar: <Avatar>MB</Avatar>,
                 cliniko_id: "cliniko-93085526",
-                source: "https://sports-and-exercise-physiotherapy.au3.cliniko.com/bookings?business_id=1000889477293415934&practitioner_id=943610693033139751&embedded=true"
+                source: "https://sports-and-exercise-physiotherapy.au3.cliniko.com/bookings?business_id=1000889477293415934&practitioner_id=943610693033139751&embedded=true&appointment_type_id[]=963932831736667830&appointment_type_id[]=963932869133082335&appointment_type_id[]=963932832843964094&appointment_type_id[]=963932831937994426"
             },
             {
                 id: "1b",
@@ -47,3 +47,5 @@ export const displayDetails = [
 
 
 ]
+
+// "https://sports-and-exercise-physiotherapy.au3.cliniko.com/bookings?business_id=1000889477293415934&practitioner_id=943610693033139751&embedded=true"
