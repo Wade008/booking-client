@@ -10,7 +10,7 @@ const Header = () => {
 
         <AppBar position="static" sx={{ backgroundColor: "inherit" }}>
             <Box sx={{ width: 220, m: 2 }}>
-                <Image src={mainLogo} alt="business logo" />
+                <a href="https://sportsandexercise.physio/" target="_blank" rel="noreferrer"><Image src={mainLogo} alt="business logo" /></a>
             </Box>
         </AppBar>
     )
